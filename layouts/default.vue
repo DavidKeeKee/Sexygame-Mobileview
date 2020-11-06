@@ -1,50 +1,57 @@
 <template>
   <v-app id="app">
     <v-navigation-drawer
+      class="navigation_drawer"
       fixed
       app
       permanent
       width="9vw"
       style="box-sizing: border-box;border-right: 0.5vw solid #A56F19;"
     >
+    <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+    </div>
+
     <div style="height:30%;width:100% ;position:relative">
-      <h1   style="position:absolute; 
+      <h1   style="position:absolute;
             bottom:15%; left: 50%;
             transform: translate(-50%, -50%);
             font-size:1vw;
-            font-weight:bold"> 
+            font-weight:bold">
             L O G O
-       </h1> 
+       </h1>
       <p style="position:absolute; bottom:1%;font-size:0.8vw;left: 50%;
             transform: translate(-50%, -50%);
-            font-weight:bold"> 
+            font-weight:bold">
             <pre>Company Name</pre>
       </p>
     </div>
-         
+
          <router-link
           v-for="(item, i) in items"
           :key="i"
-          :to="item.to" 
-          v-slot="{ navigate, isActive }" 
-          
+          :to="item.to"
+          v-slot="{ navigate, isActive }"
+
         >
-        
-            <v-btn 
+
+            <v-btn
                   block
                   height="6vh"
-                  class="text-size mt-2" 
-                  dark 
-                  elevation="18"   
+                  class="text-size mt-2"
+                  dark
+                  elevation="18"
                   :class="[isActive && 'activeLink']"
                   @click="navigate"
-                  
+
                   >
-              {{item.title}} 
-              
+              {{item.title}}
+
             </v-btn>
         </router-link>
-        
+
       <template v-slot:append>
            <v-list>
         <v-divider/>
@@ -90,28 +97,28 @@
     </v-main>
     <v-dialog
       v-model="betlogDialog"
-      max-width="1200" 
+      max-width="1200"
       min-width="290"
     >
       <betLog @close="betlogDialog=false"/>
     </v-dialog>
     <v-dialog
       v-model="memberReportDialog"
-      max-width="800" 
+      max-width="800"
       min-width="290"
     >
       <memberReport @close="memberReportDialog=false"/>
     </v-dialog>
     <v-dialog
       v-model="gameAgreementDialog"
-      max-width="800" 
+      max-width="800"
       min-width="290"
     >
       <gameAgreement @close="gameAgreementDialog=false"/>
     </v-dialog>
      <v-dialog
       v-model="settingDialog"
-      max-width="800" 
+      max-width="800"
       min-width="290"
     >
       <setting @close="settingDialog=false"/>
@@ -121,12 +128,12 @@
         padless
         height="40px"
         inset
-        fixed 
-         
-        elevation="20" 
+        fixed
+
+        elevation="20"
     >
           <v-row  class="d-flex flex-row justify-end">
-            
+
              <div class="d-flex justify-center">
                 <v-btn icon class="pa-2 ma-1" link exact v-if="showViewList">
                <v-img src="/icon/wifi按鈕_4.png"></v-img>
@@ -136,13 +143,13 @@
             <div class="d-flex justify-center">
                 <v-menu
                   offset-y
-                  top 
+                  top
                   :close-on-content-click="false"
                   :nudge-width="350"
                   :max-width="350"
                   >
                   <template v-slot:activator="{ on, attrs }">
-                    <v-btn icon class="pa-2 ma-1"  
+                    <v-btn icon class="pa-2 ma-1"
                     v-bind="attrs"
                     v-on="on">
                       <v-icon class="pa-2" v-show="music!=0" color="#B98F38">audiotrack</v-icon>
@@ -154,7 +161,7 @@
                             <v-col cols="3" class="text-center">
                               <p style="color:#C4A76E" class="mt-4">Music</p>
                             </v-col>
-                    
+
                             <v-col cols="9" class="text-center">
                             <v-row no-gutters dense >
                                 <v-btn icon color="#C4A76E" class="mt-2" @click="music==0?music=50:music=0">
@@ -162,15 +169,15 @@
                                 <v-icon v-show="music==0">volume_off</v-icon>
                                 </v-btn>
                                 <v-slider
-                                    v-model="music" 
-                                    class="mt-3" 
+                                    v-model="music"
+                                    class="mt-3"
                                     color="#196260"
                                 ></v-slider>
                             </v-row>
                         </v-col>
                         </v-row>
                       </v-card>
-                  
+
                 </v-menu>
             </div>
 
@@ -178,13 +185,13 @@
             <div class="d-flex justify-center align-center" style="width:10vw">
               <v-menu
                   offset-y
-                  top 
+                  top
                   :close-on-content-click="false"
                   :nudge-width="350"
                   :max-width="350"
                   >
                   <template v-slot:activator="{ on, attrs }">
-                      <v-btn icon 
+                      <v-btn icon
                       v-bind="attrs"
                         v-on="on">
                       <v-icon class="pa-2 " color="#B98F38">volume_up</v-icon>
@@ -195,7 +202,7 @@
                             <v-col cols="4" class="text-center">
                               <p style="color:#C4A76E" class="mt-4">Studio Sound</p>
                             </v-col>
-                    
+
                             <v-col cols="8" class="text-center">
                             <v-row no-gutters dense >
                                 <v-btn icon color="#C4A76E" class="mt-2" @click="studioSound==0?studioSound=50:studioSound=0">
@@ -203,8 +210,8 @@
                                 <v-icon v-show="studioSound==0">volume_off</v-icon>
                                 </v-btn>
                                 <v-slider
-                                    v-model="studioSound" 
-                                    class="mt-3" 
+                                    v-model="studioSound"
+                                    class="mt-3"
                                     color="#196260"
                                 ></v-slider>
                             </v-row>
@@ -214,7 +221,7 @@
                             <v-col cols="4" class="text-center">
                                   <p style="color:#C4A76E" class="mt-4">Game Volume</p>
                             </v-col>
-                    
+
                             <v-col cols="8" class="text-center">
                                 <v-row no-gutters dense >
                                     <v-btn icon color="#C4A76E" class="mt-2" @click="gameVolume==0?gameVolume=50:gameVolume=0">
@@ -222,9 +229,9 @@
                                     <v-icon v-show="gameVolume==0">volume_off</v-icon>
                                     </v-btn>
                                     <v-slider
-                                        v-model="gameVolume" 
-                                        class="mt-3" 
-                                        color="#196260" 
+                                        v-model="gameVolume"
+                                        class="mt-3"
+                                        color="#196260"
                                     ></v-slider>
                                 </v-row>
                             </v-col>
@@ -257,32 +264,32 @@
             </div>
             <v-divider vertical/>
             <div class="d-flex justify-center align-center footer-size" style="width:8vw">
-              
+
 
                 <v-icon color="#B98F38" class="mr-2">attach_money</v-icon>
 
-             
+
                 5,00000
-            
+
                   <v-icon small color="#B98F38" class="ml-2">autorenew</v-icon>
-             
+
 
 
             </div>
             <v-divider vertical/>
             <div class="d-flex justify-center align-center footer-size" style="width:10vw">
-                
+
                 <v-icon class="mr-1" color="#B98F38">account_circle</v-icon>
-               
-             
+
+
                   PLAYER_NAME
-             
+
             </div>
               <v-divider vertical/>
               <div class="d-flex justify-center align-center footer-size" style="width:14vw">
-                
+
                 2020-07-14 10:46:34 (UTC+6.5)
-              
+
               </div>
               <v-divider vertical/>
                 <div class="d-flex justify-center align-center">
@@ -374,7 +381,7 @@ export default {
         setting
     },
     computed: {
-   
+
     toRouteName() {
         let routeArr=  this.$route.name.split('-')
         if(routeArr.includes("multibet")){
@@ -448,9 +455,27 @@ export default {
 .activeLink{
   background-image:
   linear-gradient(
-      rgb(255, 255, 255) 63%, 
+      rgb(255, 255, 255) 63%,
       #B98F38
     );
   color:black
+}
+.burger {
+  display: none;
+}
+
+.burger div {
+  margin: 0;
+  padding: 0;
+  width: 25px;
+  height: 3px;
+  background-color: #efd0a1;
+  margin: 5px;
+}
+
+@media screen and (max-width:1421px) {
+    .navigation_drawer {
+      display: none;
+    }
 }
 </style>

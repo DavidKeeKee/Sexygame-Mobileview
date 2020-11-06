@@ -17,36 +17,36 @@
                     </v-system-bar>
                       <v-card
                           color="rgba(255,2555,255,0)"
-                          height="8vh" 
-                          class="d-flex align-center justify-space-between " 
-                          v-for="n in 6" 
+                          height="8vh"
+                          class="d-flex align-center justify-space-between "
+                          v-for="n in 6"
                           :key="n"
                         >
                          <div class="ml-1">
-                               <v-avatar 
-                                  color="#4C4331" 
-                                  size="2vw" 
+                               <v-avatar
+                                  color="#4C4331"
+                                  size="2vw"
                                 >
                                       <v-progress-circular
                                       :value="100"
-                                      color="#F7A823" 
-                                      size="30" 
+                                      color="#F7A823"
+                                      size="30"
                                       width="2"
                                       >
-                                 
+
                                   </v-progress-circular>
                               </v-avatar>
-                         </div> 
-                         <span style="font-size:0.7vw">blahblah</span> 
+                         </div>
+                         <span style="font-size:0.7vw">blahblah</span>
                          <div style="background-color:#EAEDEA;width:3vw;height:3vw" class="ma-2">
-                         </div> 
+                         </div>
                         </v-card>
-                        
+
                   </v-card>
 </template>
 <script>
 export default {
-    
+
 }
 </script>
 <style scoped>
@@ -56,8 +56,15 @@ export default {
     .cardGradient{
       background-image:
       linear-gradient(
-          rgb(255, 255, 255) 23%, 
+          rgb(255, 255, 255) 23%,
           #B98F38
         );
     }
+
+@media screen and (max-width:360px) {
+
+.cardGradient{
+  display: none;
+      }
+}
 </style>

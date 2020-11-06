@@ -1,58 +1,58 @@
 <template>
 <div>
-    <div style="height:13vh;width:100%; background-color:#2E2E2E" >
+    <div style="height:13vh;width:100%; background-color:#2E2E2E" class="pagination_tab" >
         <v-row style="height:100%;width:100%; margin:0;" no-gutters justify="left" >
-          <div style="height:50%;width:12.5%;" 
-          class="d-flex justify-center align-center" 
+          <div style="height:50%;width:12.5%;"
+          class="d-flex justify-center align-center"
           v-for="n in 3" :key="n">
-            <v-card height="80%" width="80%"   dark 
-            class="d-flex justify-center align-center room-list" 
-            @click="window=n" 
+            <v-card height="80%" width="80%"   dark
+            class="d-flex justify-center align-center room-list"
+            @click="window=n"
             :class="{ 'windowActive': window==n }">C0{{n}}</v-card>
           </div>
-           
-           
-       
+
+
+
         </v-row>
-          
+
       </div>
     <v-window v-model="window">
             <v-window-item :value="1">
-              <div style="height:45vh;width:100%">
-                    <div class="text-center tableBg" >
-                      <div style="width:100%; height:25%;">
-                        
+              <div class="diagram_table">
+                    <div class="text-center tableBg">
+                      <div class="tableBg1">
+
                       </div>
-                      
-                      <div style="width:100%; height:12.5%;">
-                      
+
+                      <div class="tableBg2">
+
                       </div>
-                    
-                      <v-row style="width:100%; height:12.7%" no-gutters>
+
+                      <v-row class="tableBg3" no-gutters>
                         <div style="width:50%; height:100%; ">
-                        
+
                         </div>
-                        
-                        <div style="width:50%; height:100%;">
-                          
+
+                        <div class="tableBg4">
+
                         </div>
                       </v-row>
-                    
-                      <div style="width:100%; height:50%;" class="d-flex align-content-start flex-wrap flex-column">
+
+                      <div class="d-flex align-content-start flex-wrap flex-column tableBg5">
                           <HoverPreviewResult v-for="n in 12" :key="n">
                               <template v-slot:item="slotProps" >
-                                    <v-img src="/icon/圓庄.png" 
-                                      max-height="1.6vw" 
-                                      max-width='1.6vw' 
+                                    <v-img src="/icon/圓庄.png"
+                                      max-height="1.6vw"
+                                      max-width='1.6vw'
                                       v-bind="slotProps.activate.attrs"
                                       v-on="slotProps.activate.on"
                                       />
                               </template>
-                              
+
                           </HoverPreviewResult>
 
                       </div>
-                    
+
                     </div>
                     <v-row no-gutters style="width:100%; height:10%">
                         <div class="d-flex align-center justify-left room-list" style="width:50%; height:100%; background-color:black">
@@ -75,7 +75,7 @@
                                                 src="/icon/大紅圈.png"
                                               />
                             <v-avatar color="#c70000" class="ml-1" size="15">
-                              
+
                             </v-avatar>
                             <span class="font-weight-bold red--text ml-1 mr-5  ">/</span>
                             <v-btn small color="#2d30b1" class="ml-1"><span class="white--text"> 閒問路</span></v-btn>
@@ -85,14 +85,14 @@
                                                 src="/icon/大藍圈.png"
                                               />
                             <v-avatar color="#2d30b1" class="ml-1" size="15">
-                              
+
                             </v-avatar>
                             <span class="font-weight-bold ml-1" style="color:#2d30b1">/</span>
                         </div>
                       </v-row>
               </div>
             </v-window-item>
-  
+
                 <v-window-item :value="2">
                 <div class="pa-4 text-center" style="height:100%; width:100%;background-color:black">
                     <v-text-field
@@ -108,7 +108,7 @@
                     </span>
                   </div>
                 </v-window-item>
-          
+
                 <v-window-item :value="3">
                   <div class="pa-4 text-center" style="height:100%; width:100%;background-color:black">
                     <v-img
@@ -121,7 +121,8 @@
                     <span class="caption grey--text">Thanks for signing up!</span>
                   </div>
                 </v-window-item>
-    </v-window> 
+    </v-window>
+
 </div>
 </template>
 <script>
@@ -135,7 +136,7 @@ export default {
 </script>
 <style scoped>
 .tableBg{
-  height:90%; 
+  height:90%;
   width:100%;
   background-color:#2E2E2E;
   background-image: url('/icon/單人棋盤格.png');
@@ -145,9 +146,56 @@ export default {
 }
  .windowActive{
       background-color:#AA8647 ;
-      
+
     }
       .room-list{
         font-size: 0.8vw;
     }
+
+.diagram_table {
+  height:45vh;
+  width:100%;
+}
+.tableBg1 {
+  width:100%;
+  height:25%;
+}
+.tableBg2 {
+  width:100%;
+  height:12.5%;
+}
+
+.tableBg3 {
+  width:100%;
+  height:12.7%;
+}
+
+.tableBg4 {
+  width:50%;
+  height:100%;
+}
+
+.tableBg5 {
+  width:100%;
+  height:50%;
+}
+
+ @media screen and (max-width:360px) {
+
+  .diagram_table {
+
+    height:15vh;
+    width:100%;
+    display: none;
+  }
+  .pagination_tab{
+    display: none;
+  }
+
+  .tableBg{
+  margin-top: 510px;
+  margin-left: -210px;
+}
+
+}
 </style>

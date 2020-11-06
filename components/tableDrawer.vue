@@ -1,16 +1,17 @@
 <template>
     <v-navigation-drawer
-      dark 
+      dark
       absolute
-      right 
-      floating 
-      color="rgba(0,0,0,0)" 
-      height="90vh" 
-      width="30vw"
-      style="top:2%" 
+      right
+      floating
+      color="rgba(0,0,0,0)"
+
+      :height="nav_height + 'vh'"
+      :width="nav_width +'vw'"
+      style="top:2%"
       v-model="drawer"
     >
-        <v-row no-gutters style="width:100%;height:100%">
+        <v-row no-gutters style="width:100%;height:100%;">
             <v-col cols="1" style="height:100%;">
                 <v-row align="center" style="width:100%;height:100%;" no-gutters>
                 <button class="Custombutton" @click="close" ><p class="py-5" style="writing-mode: vertical-rl;
@@ -19,9 +20,9 @@
 
             </v-col>
             <v-col cols="11">
-                <v-card style="border:2px solid #BB9953; 
-                                border-radius: 10px;" 
-                    height="100%" 
+                <v-card style="border:2px solid #BB9953;
+                                border-radius: 10px;"
+                    height="100%"
                     color="rgba(0,0,0,0.6)">
                     <v-row style="height:10%;width:100%;" no-gutters justify="end" align="center">
                              <v-btn text color="white">圓庄</v-btn>
@@ -29,31 +30,30 @@
                     </v-row>
                     <v-row style="height:90%;width:100%;" no-gutters>
                         <v-col cols="3">
-                            <div class="d-flex flex-column justify-center align-center" style="width:100%;height:100%;">
-                                <v-card height="2vw" width="5vw" 
-                                    v-for="n in 7" 
-                                    :key="n" 
-                                    color="#404040" 
-                                    style=" border:1px solid #BB9953; 
-                                            border-radius: 5px; 
-                                            font-size:0.8vw"  
-                                    dark 
-                                    class="d-flex justify-center align-center room-list mb-3" 
-                                    @click="window=n" 
+                            <div class="d-flex flex-column justify-center align-center window_space">
+                                <v-card
+                                    v-for="n in 7"
+                                    :key="n"
+                                    color="#404040"
+                                    dark
+                                    class="d-flex justify-center align-center room-list mb-3 window_fontsize"
+                                    @click="window=n"
                                     :class="{ 'windowActive': window==n }">window {{n}}
                                 </v-card>
-                    
+
                             </div>
                         </v-col>
-                        <v-col cols="9">
+                        <v-col cols="9" style="width:200px;">
                             <v-window v-model="window" vertical >
                                 <v-window-item :value="1">
                                      <v-card height="80vh" class="scroll" color="rgba(255,255,255,0)" >
-                                            <v-card height="20vh" class="ma-3 " color="#404040"
-                                            style=" border:2px solid #BB9953; 
-                                                    border-radius: 10px;" 
+                                            <v-card height="20vh"  class="chart_table" color="#404040"
+                                            style=" border:2px solid #BB9953;
+                                                    border-radius: 10px;
+                                                    "
+
                                             v-for="n in 10" :key="n">
-                                                <v-row no-gutters  style="width:100%;height:15%" justify="end">
+                                                <v-row no-gutters  style="width:100%;height:15%;" justify="end">
                                                         <v-flex row class=" align-center pl-3">
                                                             <span style="color:#C48F29" class=" textSize ml-4">
                                                                     RoomType
@@ -63,13 +63,13 @@
                                                             <span class="offsetClass">X</span>
                                                             <span class="white--text textSize ml-4">RoomType </span>
                                                         </v-flex>
-                                                        
-                                                        <div class=" 
-                                                        d-flex justify-center align-center black--text textSize ma-1 tableCount" 
+
+                                                        <div class="
+                                                        d-flex justify-center align-center black--text textSize ma-1 tableCount"
                                                         style="width:1.2vw;height:1.2vw;">
                                                             <span> 0 </span>
                                                         </div>
-                                                        
+
                                                 </v-row>
                                                 <v-row no-gutters style="width:100%;height:85%;">
                                                     <div class="ml-4 tableCard">
@@ -90,16 +90,16 @@
                 </v-card>
             </v-col>
         </v-row>
-    </v-navigation-drawer> 
+    </v-navigation-drawer>
 </template>
 <script>
 export default {
      props:['drawer'],
   components:{
-      
+
     },
     computed:{
-       
+
     },
   data () {
     return {
@@ -110,7 +110,28 @@ export default {
       close(){
           this.$emit('close')
       }
-  }
+  },
+  computed:{
+      nav_height () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 90
+          case 'sm': return 90
+          case 'md': return 90
+          case 'lg': return 90
+          case 'xl': return 90
+        }
+      },
+       nav_width () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return 80
+          case 'sm': return 80
+          case 'md': return 30
+          case 'lg': return 30
+          case 'xl': return 30
+        }
+      },
+
+      }
 }
 </script>
 <style scoped>
@@ -135,7 +156,7 @@ export default {
       background-position: center;
       background-size: 100% 100%;
       letter-spacing:20px;
-      
+
     }
     .Custombutton:focus {
     outline: 1px solid #F7D8A8;
@@ -144,7 +165,7 @@ export default {
     .windowActive{
       background-image:
       linear-gradient(
-          rgb(255, 255, 255) 63%, 
+          rgb(255, 255, 255) 63%,
           #B98F38
         );
         color:black
@@ -152,7 +173,7 @@ export default {
     .tableCount{
          background-image:
       linear-gradient(
-          rgb(255, 255, 255) 63%, 
+          rgb(255, 255, 255) 63%,
           #B98F38
         );
        border-radius: 1px;
@@ -174,4 +195,47 @@ export default {
         background-position: center;
         background-size: 100% 100%;
     }
+ .chart_table{
+        margin:12px;
+  }
+  .window_space{
+      width:100%;
+      height:100%;
+  }
+  .window_fontsize{
+    border:1px solid #BB9953;
+    border-radius: 5px;
+    font-size:0.8vw;
+    height:2vw;
+    width:5vw;
+  }
+  @media screen and (max-width:360px) {
+
+  .textSize{
+    font-size: 2.8vw;
+  }
+
+  .chart_table{
+      margin:6px 0px;
+      margin-right: 10px;
+  }
+  .col_size{
+    width: 100%;
+  }
+
+  .window_space{
+      width:100%;
+      height:100%;
+  }
+
+  .window_fontsize{
+
+    border-radius: 5px;
+    font-size:2.7vw;
+    height:8vw;
+    width:14.5vw;
+  }
+    }
 </style>
+
+

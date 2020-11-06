@@ -11,13 +11,13 @@
                           <v-sheet
                             class="d-flex justify-center "
                             elevation="8">
-                                  <v-slide-group center-active 
+                                  <v-slide-group center-active
                                   style="height:5vh;width:24vw" class="d-flex justify-center align-center">
-                                  
+
                                         <v-slide-item
-                                            v-slot:default="{ active, toggle }" 
-                                            v-for="n in 19" 
-                                            :key="n" 
+                                            v-slot:default="{ active, toggle }"
+                                            v-for="n in 19"
+                                            :key="n"
                                           >
 
                                             <v-card
@@ -26,17 +26,17 @@
                                               height="3vh"
                                               width="3vw"
                                               @click="toggle"
-                                              
+
                                             ><span class="white--text tableText">C0{{n}}</span>
 
                                             </v-card>
                                         </v-slide-item>
-                                    
-                                    
-                                      
 
-                                      
-                                      
+
+
+
+
+
                                     </v-slide-group>
                           </v-sheet>
           <!-- End slite -->
@@ -51,10 +51,10 @@
                     :page.sync="page"
                     :items-per-page="5"
                     hide-default-footer
-                    class="elevation-1 tableBackground"  
+                    class="elevation-1 tableBackground"
                     disable-sort
-                    @page-count="pageCount = $event" 
-                    height="28vh" 
+                    @page-count="pageCount = $event"
+                    height="28vh"
                     dense
                   >
                     <template v-slot:body="{items}">
@@ -65,17 +65,17 @@
                             <td style="border-top: 1px solid #AA8647"><span class="tableText" >1sdsad</span></td>
                             <td style="border-top: 1px solid #AA8647" ><span class="tableText" >1sdsad</span></td>
                             <td style="border-top: 1px solid #AA8647"><span class="tableText" >1sdsad</span></td>
-                            
+
                           </tr>
                         </tbody>
                     </template>
                    <template  v-slot:footer>
                         <div class="text-center pt-1">
-                            <v-pagination 
-                            v-model="page" 
-                            :length="pageCount" 
-                            total-visible="4" 
-                            color="#AA8647" 
+                            <v-pagination
+                            v-model="page"
+                            :length="pageCount"
+                            total-visible="4"
+                            color="#AA8647"
                           >
                           </v-pagination>
                         </div>
@@ -116,8 +116,8 @@
 
                                 <v-btn small
                                 v-bind="attrs"
-                                  v-on="on" 
-                                  color="white" 
+                                  v-on="on"
+                                  color="white"
                                   elevation="24">
                                     <span style="color:black;font-size:0.5vw">change</span>
                                   </v-btn>
@@ -141,9 +141,9 @@
                             </v-list>
                           </v-card>
                       </v-menu>
-              
+
                   </v-col>
-          
+
            </v-row>
               <div class="selectCoin d-flex align-center white--text pa-1" >
 
@@ -272,7 +272,7 @@
 .tableBackground{
   background-image:
   linear-gradient(
-      rgb(255, 255, 255) 33%, 
+      rgb(255, 255, 255) 33%,
       #B98F38
     );
     color:black
@@ -285,7 +285,7 @@
     }
 .selectCoin{
         width: 100%;
-        
+
     }
 .room-title{
         width:30%;
@@ -296,7 +296,7 @@
         font-size: 1vw;
         background-image:linear-gradient(to right, rgb(255, 255, 255) 13%, #B98F38);
         opacity: 0.9;
-          
+
     }
 </style>
 
@@ -356,7 +356,7 @@ data() {
         { text: 'Win/Lose', value: 'winlose' },
         { text: 'Remark', value: 'remark' },
       ],
-     
+
        page: 1,
       pageCount: 0,
       desserts: [
